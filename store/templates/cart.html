@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <header>
+        <h1>🛒 سبد خرید شما</h1>
+    </header>
+    <div class="cart-section">
+        {% if cart_items %}
+            <div class="cart-items">
+                <ul>
+                    {% for item in cart_items %}
+                        {% if item.product and item.product.id %}
+                            <li class="cart-item">
+                                <div class="product-info">
+                                    <span class="product-name">{{ item.product.name }}</span>
+                                    <span class="product-quantity">تعداد: {{ item.quantity }}</span>
+                                    <span class="product-price">{{ item.product.price }} تومان</span>
+                                </div>
+                                <form action="{% url 'remove_from_cart' item.product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="remove-btn">❌ حذف</button>
+                                </form>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="total-price">
+                <h3>💰 قیمت کل: {{ total_price }} تومان</h3>
+            </div>
+        {% else %}
+            <p class="empty-cart">📭 سبد خرید شما خالی است.</p>
+        {% endif %}
+    </div>
+
+    <div class="add-product-section">
+        <h2>➕ افزودن محصول به سبد خرید</h2>
+        <form action="{% url 'add_to_cart' %}" method="POST" class="add-form">
+            {% csrf_token %}
+            <input type="number" name="product_id" placeholder="کد محصول" class="input-field" required>
+            <input type="number" name="quantity" placeholder="تعداد" class="input-field" value="1" required>
+            <button type="submit" class="add-btn">افزودن</button>
+        </form>
+    </div>
+
+    <div class="payment-section">
+        <form action="{% url 'complete_payment' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="payment-btn">💳 پرداخت</button>
+        </form>
+    </div>
+</div>
+<style>
+    /* استایل کلی صفحه سبد خرید */
+.cart-container {
+    width: 90%;
+    max-width: 800px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+
+/* استایل آیتم‌های سبد خرید */
+.cart-items ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.product-quantity, .product-price {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* دکمه حذف */
+.remove-btn {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #e84118;
+}
+
+/* قیمت کل */
+.total-price {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* فرم افزودن محصول */
+.add-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+    width: 120px;
+}
+
+.add-btn {
+    background-color: #2ed573;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #1e90ff;
+}
+
+/* دکمه پرداخت */
+.payment-btn {
+    background-color: #3742fa;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+}
+
+.payment-btn:hover {
+    background-color: #1e3799;
+}
+
+/* پیام سبد خرید خالی */
+.empty-cart {
+    font-size: 1.2rem;
+    color: #777;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* واکنش‌گرایی */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-info {
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .add-form {
+        flex-direction: column;
+    }
+
+    .input-field, .add-btn, .payment-btn {
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

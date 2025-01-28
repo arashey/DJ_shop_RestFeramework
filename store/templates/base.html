@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}فروشگاه{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <!-- نوار بالایی اطلاعات کاربر -->
+    <div class="top-bar">
+        <div class="user-info">
+            {% if request.user.is_authenticated %}
+                <span>👤 خوش آمدید، {{ request.user.username }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">خروج</a>
+            {% else %}
+                <div class="auth-buttons">
+                    <a href="{% url 'login_page' %}" class="login-btn">ورود</a>
+                    <a href="{% url 'register_page' %}" class="register-btn">ثبت‌نام</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- هدر و منوی اصلی -->
+    <header>
+        <h1>🛍️ فروشگاه اینترنتی</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">🏠 صفحه اصلی</a></li>
+                <li><a href="{% url 'cart' %}">🛒 سبد خرید</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- محتوای صفحات داخلی -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- فوتر -->
+    <footer>
+        <p>کلیه حقوق محفوظ است &copy; 2025</p>
+    </footer>
+
+</body>
+<style>
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        direction: rtl;
+        text-align: right;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+
+    .top-bar {
+        background: #2c3e50;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: center; /* دکمه‌ها را وسط قرار می‌دهد */
+        align-items: center;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* فاصله مناسب بین دکمه‌ها */
+    }
+
+    .user-info span {
+        color: white;
+        font-weight: bold;
+    }
+
+    .user-info a {
+        color: #f1c40f;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .login-btn, .register-btn {
+        background: #27ae60;
+        padding: 5px 10px;
+    }
+
+    .logout-btn {
+        background: #e74c3c;
+        padding: 5px 10px;
+    }
+
+    .auth-buttons a:hover {
+        opacity: 0.8;
+    }
+
+    header {
+        background: #3498db;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    main {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    footer {
+        background: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+    }
+</style>
+</html>
+
+
+
+

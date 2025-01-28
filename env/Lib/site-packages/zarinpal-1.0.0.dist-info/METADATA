@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: zarinpal
+Version: 1.0.0
+Summary: python library for zarin pal rest apis
+Home-page: UNKNOWN
+Author: alimohammad0816
+Author-email: alimohammad0816@gmail.com
+License: LGPLv3
+Keywords: python zarinpal api wrapper
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Internet
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: annotated-types (==0.6.0)
+Requires-Dist: certifi (==2023.7.22)
+Requires-Dist: charset-normalizer (==3.3.2)
+Requires-Dist: idna (==3.4)
+Requires-Dist: pydantic (==2.5.0)
+Requires-Dist: pydantic-core (==2.14.1)
+Requires-Dist: requests (==2.31.0)
+Requires-Dist: typing-extensions (==4.8.0)
+Requires-Dist: urllib3 (==2.1.0)
+
+UNKNOWN
+

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if product %}
+    <div class="container product-page">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+            </div>
+            <div class="product-details">
+                <h1 class="product-title">{{ product.name }}</h1>
+                <p class="product-description">{{ product.description }}</p>
+                <div class="product-meta">
+                    <p class="product-price"><strong>قیمت:</strong> {{ product.price }} تومان</p>
+                    <p class="product-stock"><strong>موجودی:</strong> {{ product.stock }}</p>
+                </div>
+                <form method="POST" action="{% url 'add_to_cart' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <input type="number" name="quantity" value="1" min="1" max="100" >
+                    
+                    <button type="submit" class="add-to-cart-btn">🛒 افزودن به سبد خرید</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p class="error-message">محصول موردنظر یافت نشد.</p>
+{% endif %}
+
+<!-- استایل حرفه‌ای صفحه محصول -->
+<style>
+    /* تنظیمات کلی صفحه */
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* چینش بخش‌های محصول */
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 40px;
+    }
+
+    /* استایل تصویر محصول */
+    .product-image {
+        flex: 1;
+        max-width: 50%;
+        text-align: center;
+    }
+
+    .product-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* استایل بخش اطلاعات محصول */
+    .product-details {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .product-title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .product-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .product-meta {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .product-price {
+        font-size: 22px;
+        color: #d32f2f;
+    }
+
+    .product-stock {
+        font-size: 18px;
+        color: #388e3c;
+    }
+
+    /* دکمه‌ی افزودن به سبد خرید */
+    .add-to-cart-btn {
+        display: inline-block;
+        background: #ff6600;
+        color: white;
+        font-size: 18px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        font-weight: bold;
+    }
+
+    .add-to-cart-btn:hover {
+        background: #e65c00;
+    }
+
+    /* پیام خطا */
+    .error-message {
+        color: red;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* حالت موبایل */
+    @media (max-width: 768px) {
+        .product-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .product-image, .product-details {
+            max-width: 100%;
+        }
+
+        .product-title {
+            font-size: 24px;
+        }
+
+        .product-price {
+            font-size: 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+
+
+
