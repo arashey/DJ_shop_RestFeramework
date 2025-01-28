@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "874abd5f-e66c-48d9-a8b0-bb1ee6c84156",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41338687"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MDA2NDQ0LCJpYXQiOjE3MzgwMDYxNDQsImp0aSI6IjBmYjNhNDQ2NzEwNDQ0YTE5ZTYxZTY4NjJkNGE3YzZjIiwidXNlcl9pZCI6MX0.vCb8spo7soFFUmbBIeXfVxg6K5EPOGG0AtU5sQgIyVE",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuserr\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/register/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuserr\",\r\n    \"email\": \"testuserr@example.com\",\r\n    \"phone_number\": \"091234567890\",\r\n    \"address\": \"Tehran, Iran\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register",
+						""
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/products/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MDU4NzA1LCJpYXQiOjE3MzgwNTg0MDUsImp0aSI6IjU4MTdhZmQzMmQ5YzRiY2ZhZDY3MTNlMzhlMTE4NGI0IiwidXNlcl9pZCI6NH0.6OX4qXfHJLXJLpnSph6au748kAZ6sgThBUHLekhTiRw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/products/3/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MDU5MDI0LCJpYXQiOjE3MzgwNTg3MjQsImp0aSI6IjIzMDU1NzcyOGNmYzQ1ODBhMTg3Mjk2YWI1NjQwMzVmIiwidXNlcl9pZCI6NH0.KDKxZ31FnPj-6J3wUgo7X9CnhDGApRcEUXkiCE9b9gM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/products/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"products",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/cart/add/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM4MDU5MTczLCJpYXQiOjE3MzgwNTg4NzMsImp0aSI6IjdhOWI1NjNjZmVkODQ3ZDhiMTVhYjM1NjQxNTQ3ZTU3IiwidXNlcl9pZCI6NH0.a_7CkDJpirdvvYezmn6mMnqwHg4jfvglNSd6WuaEaxI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": 3,\r\n    \"quantity\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cart/add/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cart",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
